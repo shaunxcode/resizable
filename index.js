@@ -59,6 +59,7 @@
       element.appendChild(handles[handleDir]);
       return handles[handleDir].addEventListener("mousedown", function(e) {
         var resizeMove, resizeStop, style;
+        e.stopPropagation();
         startX = e.pageX;
         startY = e.pageY;
         style = window.getComputedStyle(element);

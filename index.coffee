@@ -28,6 +28,7 @@ module.exports = (element) ->
 			element.appendChild handles[handleDir]
 			
 			handles[handleDir].addEventListener "mousedown", (e) ->
+				e.stopPropagation()
 				startX = e.pageX
 				startY = e.pageY
 				style = window.getComputedStyle element
