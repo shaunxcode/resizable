@@ -1,0 +1,21 @@
+{
+  "name": "resizable",
+  "repo": "shaunxcode/resizable",
+  "description": "resize element",
+  "version": "0.0.1",
+  "keywords": [
+    "utility",
+    "element",
+    "resize"
+  ],
+  "dependencies": {
+    "component/emitter": "*",
+    "component/classes": "*"
+  },
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "index.css"
+  ]
+}

@@ -1,0 +1,54 @@
+.resize-handle {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+}
+
+.resize-handle-n {
+	left: 0;
+	width: 100%;
+	cursor: ns-resize;
+}
+
+.resize-handle-s {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	cursor: ns-resize;
+}
+
+.resize-handle-e {
+	right: 0;
+	height: 100%;
+	cursor: ew-resize;
+}
+
+.resize-handle-w {
+	left: 0;
+	height: 100%;
+	cursor: ew-resize;
+}
+
+.resize-handle-ne {
+	right: 0;
+	top: 0;
+	cursor: nesw-resize;
+}
+
+.resize-handle-se {
+	right: 0;
+	bottom: 0;
+	cursor: nwse-resize;
+}
+
+.resize-handle-sw {
+	left: 0;
+	bottom: 0;
+	cursor: nesw-resize;
+}
+
+.resize-handle-nw {
+	left: 0;
+	top: 0;
+	cursor: nwse-resize;
+}

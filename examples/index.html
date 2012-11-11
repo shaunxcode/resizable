@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { width: 1000px; height: 1000px; }
+.widget {
+    position: absolute;
+    background: #333;
+}
+
+#item1 { width: 200px; height: 200px; left: 100px; top: 50px; }
+#item2 { width: 100px; height: 200px; left: 400px; top: 150px;  }
+#item3 { width: 300px; height: 100px; left: 300px; top: 400px; }
+</style>
+<script src="../build/build.js"></script>
+<link rel="stylesheet" href="../build/build.css">
+</head>
+
+<body>
+	<div id="item1" class="widget"></div>
+	<div id="item2" class="widget"></div>
+	<div id="item3" class="widget"></div>
+</body>
+
+<script>
+var resizable = require("resizable");
+var item1 = resizable(document.getElementById("item1"));
+
+</script>
+</html>
