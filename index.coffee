@@ -10,24 +10,25 @@ handleDirs =
 	se: cursor: "se", s: true, e: true
 	sw: cursor: "sw", s: true, w: true
 	nw: cursor: "nw", n: true, w: true
-	
-module.exports = (element) ->
-	emitter = new Emitter
+
+ResizableElement = (@element) ->
+	@_handles = {}
+	self = this
+
 	startX = 0
 	startY = 0
 	startW = 0
 	startH = 0
-	handles = {}
 
 	for handleDir, details of handleDirs
 		do (handleDir, details) ->
-			handles[handleDir] = document.createElement "div"
-			classes(handles[handleDir])
+			self._handles[handleDir] = document.createElement "div"
+			classes(self._handles[handleDir])
 				.add("resize-handle")
 				.add("resize-handle-#{handleDir}")
-			element.appendChild handles[handleDir]
+			element.appendChild self._handles[handleDir]
 			
-			handles[handleDir].addEventListener "mousedown", (e) ->
+			self._handles[handleDir].addEventListener "mousedown", (e) ->
 				e.stopPropagation()
 				startX = e.pageX
 				startY = e.pageY
@@ -35,7 +36,7 @@ module.exports = (element) ->
 				startW = parseInt style.width
 				startH = parseInt style.height
 
-				emitter.emit "resizestart", {element, handleDir}
+				self.emit "resizestart", {element, handleDir}
 		
 				document.addEventListener "mousemove", resizeMove = (e) ->
 					if details.n 
@@ -52,11 +53,24 @@ module.exports = (element) ->
 						element.style.left = (e.pageX) + "px"
 						element.style.width = (startW + (startX - e.pageX)) + "px"
 			
-					emitter.emit "resize", {element, handleDir}
+					self.emit "resize", {element, handleDir}
 
 				document.addEventListener "mouseup", resizeStop = (e) ->
 					document.removeEventListener "mousemove", resizeMove
 					document.removeEventListener "mouseup", resizeStop
 			
-					emitter.emit "resizestop", {element, handleDir}
-	emitter
+					self.emit "resizestop", {element, handleDir}
+	self
+
+ResizableElement.prototype.handles = (dirs...) ->
+	for dir, el of @_handles
+		if dir in dirs
+			classes(el).remove "resize-handle-hidden"
+		else
+			classes(el).add "resize-handle-hidden"
+
+	this
+
+Emitter ResizableElement.prototype
+
+module.exports = (element) -> new ResizableElement element

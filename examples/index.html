@@ -23,9 +23,9 @@ body { width: 1000px; height: 1000px; }
 </body>
 
 <script>
-var draggable = require("shaunxcode-draggable");
 var resizable = require("resizable");
 var item1resize = resizable(document.getElementById("item1"));
-var item1drag = draggable(document.getElementById("item1"));
+var item2 = resizable(document.getElementById("item2"));
+item2.handles("n", "se");
 </script>
 </html>

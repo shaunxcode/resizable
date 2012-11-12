@@ -4,6 +4,10 @@
 	height: 10px;
 }
 
+.resize-handle-hidden {
+	display: none;
+}
+
 .resize-handle-n {
 	left: 0;
 	width: 100%;
